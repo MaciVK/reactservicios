@@ -8,7 +8,7 @@ export default class Departamentos extends Component {
 
   state = {
     departamentos: [],
-    statusDep: false,
+    status: false,
     deptno: 0,
     empleados: [],
     statusEmp: false,
@@ -20,7 +20,7 @@ export default class Departamentos extends Component {
   cargarDepartamentos = () => {
     var request = Global.urlApiDepartamentos;
     axios.get(request).then((res) => {
-      this.setState({ departamentos: res.data, statusDep: true });
+      this.setState({ departamentos: res.data, status: true });
     });
   };
 
@@ -33,14 +33,10 @@ export default class Departamentos extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.buscarEmpleados}>
+        <form>
           <label>Buscar departamento:</label>
-          <select
-            ref={this.departamento}
-            onChange={this.actualizarNumeroDepartamento}
-          >
+          <select ref={this.departamento}>
             {this.state.departamentos.length > 0 &&
-              this.state.statusDep &&
               this.state.departamentos.map((departamento, i) => {
                 return (
                   <option value={departamento.Numero} key={i}>
@@ -53,10 +49,8 @@ export default class Departamentos extends Component {
             Buscar empleados en este departamento
           </button>
           <hr />
-          {this.state.empleados.length > 0 && (
-            <Empleado iddepart={this.state.deptno} />
-          )}
         </form>
+        {this.state.deptno != 0 && <Empleado iddepart={this.state.deptno} />}
       </div>
     );
   }

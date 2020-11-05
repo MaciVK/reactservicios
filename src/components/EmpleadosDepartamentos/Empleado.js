@@ -15,13 +15,20 @@ export default class Empleados extends Component {
     });
   };
 
+  //componentDidMount es para cuando el componente esté creado
+  //componentDidUpdate es para cuando
+
   componentDidMount = () => {
+    this.cargarEmpleados();
+  };
+
+  componentDidUpdate = () => {
     this.cargarEmpleados();
   };
   render() {
     return (
       <ul>
-        {this.state.empleados &&
+        {this.state.empleados.length > 0 &&
           this.state.empleados.map((empleado, index) => {
             return <li key={index}>{empleado.apellido}</li>;
           })}
