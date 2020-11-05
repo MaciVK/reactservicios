@@ -6,7 +6,10 @@ export default class UpdateDepartamento extends Component {
   render() {
     return (
       <div>
-        <h1>Modificar Departamento {this.props.iddepartamento}</h1>
+        <h1>
+          Modificar Departamento {this.props.iddepartamento},{this.props.nombre}
+          , {this.props.localidad}
+        </h1>
       </div>
     );
   }
