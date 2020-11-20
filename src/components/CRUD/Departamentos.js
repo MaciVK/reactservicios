@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Global from "./../../Global";
+import { NavLink } from "react-router-dom";
 export default class Departamentos extends Component {
   state = {
     departamentos: [],
@@ -41,7 +42,9 @@ export default class Departamentos extends Component {
                     <td>{departamento.nombre}</td>
                     <td>{departamento.localidad}</td>
                     <td>
-                      <a href={"/details/" + departamento.numero}>Detalles</a>
+                      <NavLink to={"/details/" + departamento.numero}>
+                        Detalles
+                      </NavLink>
                     </td>
                   </tr>
                 );

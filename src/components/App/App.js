@@ -22,7 +22,7 @@ function App() {
       {/* <EmpleadosRouter />
       <hr />
       <Router /> */}
-      <MenuCRUD />
+
       <Router />
       {/* <DepartamentosCRUD /> */}
     </div>

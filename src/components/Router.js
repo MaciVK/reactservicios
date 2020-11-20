@@ -5,12 +5,15 @@ import Departamentos from "./CRUD/Departamentos";
 import InsertarDepartamento from "./CRUD/InsertarDepartamento";
 import DetallesDepartamento from "./CRUD/DetallesDepartamento";
 import UpdateDepartamento from "./CRUD/UpdateDepartamento";
+import DeleteDepartamento from "./CRUD/DeleteDepartamento";
+import MenuCRUD from "./CRUD/MenuCRUD";
 
 export default class Router extends Component {
   render() {
     return (
       <div>
         <BrowserRouter>
+          <MenuCRUD />
           <Switch>
             <Route exact path="/" component={Departamentos} />
             <Route exact path="/create" component={InsertarDepartamento} />
@@ -36,6 +39,14 @@ export default class Router extends Component {
                     localidad={loc}
                   />
                 );
+              }}
+            />
+            <Route
+              exact
+              path="/delete/:id"
+              render={(props) => {
+                var idDep = props.match.params.id;
+                return <DeleteDepartamento iddepartamento={idDep} />;
               }}
             />
             <Route
